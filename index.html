@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FreshTrack</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div id="splash">🌿</div>
+
+<div class="app">
+
+  <div class="sidebar">
+    <h2>🌿 FreshTrack</h2>
+    <p onclick="showPage('dashboard')">Dashboard</p>
+    <p onclick="showPage('add')">Add Items</p>
+    <p onclick="showPage('analytics')">Analytics</p>
+    <p onclick="showPage('recipesPage')">Recipes</p>
+    <p onclick="showPage('settings')">Settings</p>
+  </div>
+
+  <div class="main">
+
+    <div class="topbar">
+      <h2 id="title">Dashboard</h2>
+      <div onclick="showExpiring()" style="cursor:pointer;">🔔</div>
+    </div>
+
+    <div id="dashboard" class="page">
+
+      <div class="cards">
+        <div class="card green" onclick="filterItems('safe')">
+          Safe <span id="safe">0</span>
+        </div>
+
+        <div class="card yellow" onclick="filterItems('expiring')">
+          Expiring <span id="expiring">0</span>
+        </div>
+
+        <div class="card red" onclick="filterItems('expired')">
+          Expired <span id="expired">0</span>
+        </div>
+      </div>
+
+      <button onclick="filterItems('all')">Show All</button>
+
+      <ul id="list"></ul>
+    </div>
+
+    <!-- 🔥 UPDATED ADD FORM -->
+    <div id="add" class="page hidden">
+      <h3>Add Food</h3>
+
+      <label>🍽️ Food Name</label>
+      <input id="name" placeholder="Enter food name">
+
+      <label>📦 Category</label>
+      <input id="category" placeholder="Veg / Dairy / Fruit/Others">
+
+      <label>📅 Manufacturing Date</label>
+      <input type="date" id="mfg">
+
+      <label>⏳ Expiry Date</label>
+      <input type="date" id="exp">
+
+      <button onclick="addItem()">Add</button>
+    </div>
+
+    <div id="analytics" class="page hidden">
+      <canvas id="chart" height="80"></canvas>
+    </div>
+
+    <div id="recipesPage" class="page hidden">
+      <h3>🍲 Smart Recipes</h3>
+      <div id="recipes"></div>
+    </div>
+
+    <div id="settings" class="page hidden">
+      <h3>⚙️ Settings</h3>
+      <p>Dark Mode Enabled 🌙</p>
+    </div>
+
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
